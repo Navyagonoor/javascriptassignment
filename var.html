@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h3>JS Scope Demo</h3>
+  <button onclick="demo()">Run</button>
+  <pre id="out"></pre>
+  <script>
+    var globalVar = "Global Scope";
+    function demo() {
+      let out = globalVar + "\n";
+      function local() {
+        var localVar = "Local Scope";
+        out += localVar + "\n";
+      }
+      local();
+      if (true) {
+        let blockLet = "Block Scope (let)";
+        const blockConst = "Block Scope (const)";
+        var notBlock = "var escapes block";
+        out += blockLet + "\n" + blockConst + "\n";
+      }
+      out += notBlock + "\n";
+      let name = "Outer";
+      out += "Name: " + name + "\n";
+      { let name = "Inner"; out += "Shadowed: " + name + "\n"; }
+      out += "Name again: " + name;
+      document.getElementById("out").textContent = out;
+    }
+  </script>
+</body>
+</html>

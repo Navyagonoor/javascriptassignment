@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Evaluate Conditions</title>
+</head>
+<body>
+  <h3>Enter Details:</h3>
+
+  <input type="number" id="age" placeholder="Age">
+  <input type="text" id="hasLicense" placeholder="Has License (true/false)">
+  <input type="number" id="temperature" placeholder="Temperature">
+  <input type="number" id="humidity" placeholder="Humidity">
+  <input type="text" id="role" placeholder="Role (admin/editor/user)">
+  <input type="text" id="isActive" placeholder="Is Active (true/false)">
+  
+  <button onclick="evaluateConditions()">Evaluate</button>
+  <p id="output"></p>
+
+  <script>
+    function evaluateConditions() {
+      let age = +document.getElementById('age').value,
+          hasLicense = document.getElementById('hasLicense').value === 'true',
+          temperature = +document.getElementById('temperature').value,
+          humidity = +document.getElementById('humidity').value,
+          role = document.getElementById('role').value,
+          isActive = document.getElementById('isActive').value === 'true';
+
+      let result = "";
+      if (age > 18 && hasLicense) result += "Eligible to drive. ";
+      if (temperature > 30 || humidity > 70) result += "Warning: High discomfort level. ";
+      if ((role === "admin" || role === "editor") && isActive) result += "Access granted. ";
+      if (age >= 18 && age <= 30 && !hasLicense) result += "Age range 18-30, no license. ";
+      if (temperature < 0 && humidity < 40) result += "Warning: Freezing conditions. ";
+      if (role === "user" && !isActive) result += "Inactive user. ";
+
+      document.getElementById('output').innerText = result || "No conditions met.";
+    }
+  </script>
+
+</body>
+</html>

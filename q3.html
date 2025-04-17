@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List Item Logger</title>
+  <style>
+    .highlight {
+      background-color:blue;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>My List</h2>
+  <ul id="myList">
+    <li>Renuka</li>
+    <li>Kiran</li>
+    <li>Gaddam</li>
+    <li>Sushu</li>
+    <li>Navya</li>
+  </ul>
+  <button onclick="processList()">Run Script</button>
+  <script>
+    function processList() {
+      const items = document.querySelectorAll("#myList li");
+      console.log("Total items:", items.length);
+      items.forEach((item, index) => {
+        console.log("Item " + (index + 1) + ": " + item.textContent);
+        if ((index + 1) % 2 === 0) {
+          item.classList.add("highlight");
+        }
+      });
+    }
+  </script>
+</body>
+</html>
