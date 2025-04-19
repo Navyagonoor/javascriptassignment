@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+function createCalculator() {
+  return {
+    add: (a, b) => a + b,
+    subtract: (a, b) => a - b,
+    multiply: (a, b) => a * b,
+    divide: (a, b) => b !== 0 ? a / b : 'Error'
+  };
+}
+const calc = createCalculator();
+console.log('Add:', calc.add(10, 5));
+console.log('Subtract:', calc.subtract(10, 5));
+console.log('Multiply:', calc.multiply(10, 5));
+console.log('Divide:', calc.divide(10, 5));
+</script>
+</body>
+</html>
